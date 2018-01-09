@@ -1,6 +1,6 @@
 {
-  "name": "material-ui-pickers",
-  "version": "1.0.0-beta.12",
+  "name": "@alienfast/material-ui-pickers",
+  "version": "1.0.12",
   "private": true,
   "description": "React components, that implements material design pickers for material-ui v1",
   "main": "build/dist/material-ui-pickers.cjs.js",
@@ -44,6 +44,7 @@
     "react-text-mask": "^5.0.2"
   },
   "scripts": {
+    "af-publish": "npm version patch && npm run build && cd build && npm publish && cd .. && rimraf build",
     "test": "jest && npm run typescript",
     "typescript": "tsc -p tsconfig.json",
     "start": "cross-env NODE_ENV=development rollup --config --watch",
