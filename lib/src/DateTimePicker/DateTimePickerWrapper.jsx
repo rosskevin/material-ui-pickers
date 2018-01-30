@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { withStyles } from 'material-ui';
+import withStyles from 'material-ui/styles/withStyles';
 
 import DomainPropTypes from '../constants/prop-types';
 import ModalWrapper from '../wrappers/ModalWrapper';
@@ -104,6 +104,10 @@ export class DateTimePickerWrapper extends PickerBase {
         dialogContentClassName={classes.dialogContent}
         invalidLabel={invalidLabel}
         labelFunc={labelFunc}
+        minDate={minDate}
+        maxDate={maxDate}
+        disablePast={disablePast}
+        disableFuture={disableFuture}
         {...other}
       >
         <DateTimePicker
