@@ -61,7 +61,6 @@
   ],
   "scripts": {
     "af-publish": "npm version patch && npm run build && cd build && npm publish && cd .. && rimraf build",
-
     "test": "jest",
     "test:date-fns": "UTILS=date-fns npm run test",
     "test:luxon": "UTILS=date-fns npm run test",
