@@ -1,28 +1,23 @@
 {
+  "presets": [
+    ["@babel/env", { "loose": true }],
+    "@babel/react",
+    "@babel/typescript"
+  ],
+  "plugins": [
+    ["@babel/proposal-class-properties", { "loose": true }],
+    ["transform-react-remove-prop-types", { "mode": "unsafe-wrap" }]
+  ],
   "env": {
     "test": {
-      "presets": ["es2015"],
       "plugins": [
-        "transform-object-rest-spread",
-        "transform-react-jsx",
-        "transform-class-properties"
+        "@babel/transform-runtime"
       ]
     },
-    "development": {
-      "presets": [[ "es2015", { "modules": false } ]],
+    "cjs": {
       "plugins": [
-        "transform-object-rest-spread",
-        "transform-react-jsx",
-        "transform-class-properties",
-      ]
-    },
-    "production": {
-      "presets": [[ "es2015", { "modules": false } ]],
-      "plugins": [
-        "transform-object-rest-spread",
-        "transform-react-jsx",
-        "transform-class-properties",
+        "@babel/transform-runtime"
       ]
     }
-  } 
+  }
 }
