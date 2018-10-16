@@ -1,6 +1,6 @@
 {
   "name": "@alienfast/material-ui-pickers",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "private": true,
   "description": "React components, that implements material design pickers for material-ui v1",
   "main": "dist/material-ui-pickers.cjs.js",
