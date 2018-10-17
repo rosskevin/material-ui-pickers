@@ -17,7 +17,6 @@ describe('e2e - DatePicker', () => {
       />
     );
   });
-
   it('Should renders', () => {
     expect(component).toBeTruthy();
   });

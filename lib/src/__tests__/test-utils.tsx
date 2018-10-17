@@ -1,26 +1,48 @@
+import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
+import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 import * as enzyme from 'enzyme';
 import * as React from 'react';
 import { WithUtilsProps } from '../_shared/WithUtils';
-import { MaterialUiPickersDate } from '../typings/date';
-import { Utils } from '../typings/utils';
 import DateFnsUtils from '../utils/date-fns-utils';
 import LuxonUtils from '../utils/luxon-utils';
 import MomentUtils from '../utils/moment-utils';
+import MuiPickersUtilsProvider from '../utils/MuiPickersUtilsProvider';
 
-const getUtilToUse = (): Utils<MaterialUiPickersDate> => {
+const theme = createMuiTheme({
+  typography: {
+    useNextVariants: true,
+  },
+});
+
+const getUtilClass = () => {
   switch (process.env.UTILS) {
     case 'moment':
-      return new MomentUtils();
+      return MomentUtils;
     case 'date-fns':
-      return new DateFnsUtils();
+      return DateFnsUtils;
     case 'luxon':
-      return new LuxonUtils();
+      return LuxonUtils;
     default:
-      return new DateFnsUtils();
+      return DateFnsUtils;
   }
 };
 
-export const utilsToUse = getUtilToUse();
+export const UtilClassToUse: any = getUtilClass();
+export const utilsToUse = new UtilClassToUse();
+
+// jest.doMock('../_shared/WithUtils', () => {
+//   const WithUtils = () => (Component: React.ComponentType<WithUtilsProps>) => {
+//     const withUtils: React.SFC<any> = props => (
+//       <Component utils={utilsToUse} {...props} />
+//     );
+//     withUtils.displayName = `WithUtils(${Component.displayName ||
+//     Component.name})`;
+//
+//     return withUtils;
+//   };
+//
+//   return { default: WithUtils };
+// });
 
 const getComponentWithUtils = <P extends WithUtilsProps>(
   element: React.ReactElement<P>
@@ -32,7 +54,12 @@ export const shallow = <P extends WithUtilsProps>(
 
 export const mount = <P extends WithUtilsProps>(
   element: React.ReactElement<P>
-) => enzyme.mount(getComponentWithUtils(element));
+) =>
+  enzyme.mount(
+    <MuiPickersUtilsProvider utils={UtilClassToUse}>
+      <MuiThemeProvider theme={theme}>{element}</MuiThemeProvider>
+    </MuiPickersUtilsProvider>
+  );
 
 export const shallowRender = (
   render: (props: any) => React.ReactElement<any>
@@ -41,17 +68,3 @@ export const shallowRender = (
     render({ utils: utilsToUse, classes: {} as any, theme: {} as any })
   );
 };
-
-jest.doMock('../_shared/WithUtils', () => {
-  const WithUtils = () => (Component: React.ComponentType<WithUtilsProps>) => {
-    const withUtils: React.SFC<any> = props => (
-      <Component utils={utilsToUse} {...props} />
-    );
-    withUtils.displayName = `WithUtils(${Component.displayName ||
-      Component.name})`;
-
-    return withUtils;
-  };
-
-  return { default: WithUtils };
-});

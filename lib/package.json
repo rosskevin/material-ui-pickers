@@ -5,7 +5,7 @@
   "description": "React components, that implements material design pickers for material-ui v1",
   "main": "dist/material-ui-pickers.cjs.js",
   "module": "dist/material-ui-pickers.esm.js",
-  "types": "src/index.d.ts",
+  "types": "index.d.ts",
   "keywords": [
     "material-ui",
     "pickers",
@@ -67,7 +67,7 @@
     "build:copy": "node copy.js",
     "build:bundle": "rollup --config",
     "build:typescript": "tsc --project tsconfig.build.json",
-    "build": "npm run build:bundle && npm run build:typescript && npm run build:copy",
+    "build": "npm run build:typescript && npm run build:bundle && npm run build:copy",
     "build:analyze": "npm run build && npx size-limit",
     "release": "np --no-publish --any-branch",
     "postrelease": "npm run build && npm publish build",
@@ -75,14 +75,6 @@
     "postinstall": "node -e \"console.log('\\u001b[35m\\u001b[1mHave you installed one of peer libraries?\\u001b[22m\\u001b[39m\\n > date-fns \\n > luxon \\n > moment')\""
   },
   "devDependencies": {
-    "@babel/cli": "^7.1.2",
-    "@babel/core": "^7.1.2",
-    "@babel/plugin-proposal-class-properties": "^7.1.0",
-    "@babel/plugin-transform-runtime": "^7.1.0",
-    "@babel/preset-env": "^7.1.0",
-    "@babel/preset-react": "^7.0.0",
-    "@babel/preset-typescript": "^7.1.0",
-    "@babel/runtime": "^7.1.2",
     "@material-ui/core": "^3.2.1",
     "@types/classnames": "^2.2.6",
     "@types/enzyme": "^3.1.14",
@@ -100,10 +92,6 @@
     "@types/react-event-listener": "^0.4.7",
     "@types/react-text-mask": "^5.4.2",
     "@types/react-transition-group": "^2.0.14",
-    "babel-core": "^7.0.0-bridge.0",
-    "babel-eslint": "^10.0.1",
-    "babel-jest": "^23.6.0",
-    "babel-plugin-transform-react-remove-prop-types": "^0.4.19",
     "classnames": "^2.2.6",
     "codecov": "^3.1.0",
     "cross-env": "^5.2.0",
@@ -124,7 +112,6 @@
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "rollup": "^0.66.6",
-    "rollup-plugin-babel": "^4.0.3",
     "rollup-plugin-commonjs": "^9.2.0",
     "rollup-plugin-node-resolve": "^3.4.0",
     "rollup-plugin-size-snapshot": "^0.7.0",
@@ -154,8 +141,7 @@
     "testURL": "http://localhost/",
     "collectCoverage": true,
     "transform": {
-      "^.+\\.tsx?$": "ts-jest",
-      "^.+\\.js?$": "babel-jest"
+      "^.+\\.tsx?$": "ts-jest"
     },
     "moduleFileExtensions": [
       "ts",

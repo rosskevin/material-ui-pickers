@@ -2,6 +2,7 @@ import { createMount } from '@material-ui/core/test-utils';
 import { ShallowWrapper } from 'enzyme';
 import * as React from 'react';
 import { DateTextField, DateTextFieldProps } from '../../_shared/DateTextField';
+import { DateTimePicker } from '../../DateTimePicker/DateTimePicker';
 import { shallow, utilsToUse } from '../test-utils';
 
 describe('DateTextField', () => {
@@ -15,6 +16,7 @@ describe('DateTextField', () => {
         format="dd/MM/yyyy"
         classes={{} as any}
         onChange={jest.fn()}
+        onClick={jest.fn()}
       />
     );
   });
@@ -44,6 +46,7 @@ describe('DateTextField keyboard mode', () => {
         clearable
         onClear={jest.fn()}
         onChange={jest.fn()}
+        onClick={jest.fn()}
       />
     );
   });
@@ -83,6 +86,7 @@ describe('DateTextField with custom TextField', () => {
         TextFieldComponent={CustomTextField}
         format="dd/MM/yyyy"
         onChange={jest.fn()}
+        onClick={jest.fn()}
       />
     );
 
@@ -100,6 +104,7 @@ describe('DateTextField with custom TextField', () => {
         TextFieldComponent="li"
         format="dd/MM/yyyy"
         onChange={jest.fn()}
+        onClick={jest.fn()}
       />
     );
 
@@ -118,6 +123,7 @@ describe('DateTextField with custom TextField', () => {
           TextFieldComponent={<div /> as any}
           format="dd/MM/yyyy"
           onChange={jest.fn()}
+          onClick={jest.fn()}
         />
       );
     }).toThrow();

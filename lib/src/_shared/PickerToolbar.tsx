@@ -5,12 +5,12 @@ import Toolbar, { ToolbarProps } from '@material-ui/core/Toolbar';
 import classnames from 'classnames';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import { ExtendMui } from '../_helpers/types';
+import { ExtendMui } from '../typings/extendMui';
 
 export interface PickerToolbarProps
   extends ExtendMui<ToolbarProps>,
     WithStyles<typeof styles> {
-  children?: React.ReactNodeArray;
+  children: React.ReactNodeArray;
 }
 
 const PickerToolbar: React.SFC<PickerToolbarProps> = ({

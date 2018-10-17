@@ -1,6 +1,6 @@
 import { Omit } from '@material-ui/core';
 import { DialogProps as DialogPropsType } from '@material-ui/core/Dialog';
-import * as keycode_ from 'keycode';
+import keycode_ from 'keycode';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import DateTextField, { DateTextFieldProps } from '../_shared/DateTextField';
@@ -87,6 +87,7 @@ export default class ModalWrapper extends React.PureComponent<
     onClose: undefined,
     onSetToday: undefined,
     DialogProps: undefined,
+    isAccepted: false,
   };
 
   public static getDerivedStateFromProps(nextProps: ModalWrapperProps) {
